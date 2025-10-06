@@ -15,7 +15,7 @@
           pname = "dwl";
           version = "0.7";
           
-          src = ./src;
+          src = ./.;
 
           #src = pkgs.fetchFromGitea {
           #  domain = "codeberg.org";
