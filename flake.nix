@@ -3,12 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, nixpkgs }:
       let
+        system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
         
         dwl = pkgs.stdenv.mkDerivation rec {
@@ -33,9 +32,7 @@
           buildInputs = with pkgs; [
             wayland
             wayland-protocols
-            #wlroots
             wlroots_0_18
-            #wlroots_0_19
             libxkbcommon
             pixman
             libinput
@@ -64,22 +61,23 @@
           };
         };
       in
-      {
-        packages.default = dwl;
-        packages.dwl = dwl;
+    {
+      packages.${system} = {
+        default = dwl;
+        dwl = dwl;
+      };
 
-        apps.default = {
-          type = "app";
-          program = "${dwl}/bin/dwl";
-        };
+      apps.${system}.default = {
+        type = "app";
+        program = "${dwl}/bin/dwl";
+      };
 
-        devShells.default = pkgs.mkShell {
-          buildInputs = dwl.buildInputs ++ dwl.nativeBuildInputs;
-          shellHook = ''
-            echo "Environnement de développement DWL"
-            echo "Compiler avec: make"
-          '';
-        };
-      }
-    );
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = dwl.buildInputs ++ dwl.nativeBuildInputs;
+        shellHook = ''
+          echo "Environnement de développement DWL"
+          echo "Compiler avec: make"
+        '';
+      };
+    };
 }
