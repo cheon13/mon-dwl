@@ -43,7 +43,7 @@
           ];
           
           # Variables d'environnement pour pkg-config
-          #PKG_CONFIG_PATH = "${pkgs.wlroots_0_18}/lib/pkgconfig";
+          PKG_CONFIG_PATH = "${pkgs.wlroots_0_18}/lib/pkgconfig";
           
           # Désactiver git pour la version
           makeFlags = [
