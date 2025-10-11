@@ -36,6 +36,10 @@
             libxkbcommon
             pixman
             libinput
+            # pour la patch bar.patch ajouter tllist + fcft + libdrm
+            tllist
+            fcft
+            libdrm
           ];
           
           # Variables d'environnement pour pkg-config
