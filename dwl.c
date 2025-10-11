@@ -89,7 +89,7 @@ enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
 enum { CurNormal, CurPressed, CurMove, CurResize }; /* cursor */
 enum { XDGShell, LayerShell, X11 }; /* client types */
 enum { LyrBg, LyrBottom, LyrTile, LyrFloat, LyrTop, LyrFS, LyrOverlay, LyrBlock, NUM_LAYERS }; /* scene layers */
-+enum { ClkTagBar, ClkLtSymbol, ClkStatus, ClkTitle, ClkClient, ClkRoot }; /* clicks */
+enum { ClkTagBar, ClkLtSymbol, ClkStatus, ClkTitle, ClkClient, ClkRoot }; /* clicks */
 #ifdef XWAYLAND
 enum { NetWMWindowTypeDialog, NetWMWindowTypeSplash, NetWMWindowTypeToolbar,
 	NetWMWindowTypeUtility, NetLast }; /* EWMH atoms */
@@ -448,15 +448,15 @@ static struct wlr_box sgeom;
 static struct wl_list mons;
 static Monitor *selmon;
 
-+static char stext[256];
-+static struct wl_event_source *status_event_source;
-+
-+static const struct wlr_buffer_impl buffer_impl = {
-+    .destroy = bufdestroy,
-+    .begin_data_ptr_access = bufdatabegin,
-+    .end_data_ptr_access = bufdataend,
-+};
-+
+static char stext[256];
+static struct wl_event_source *status_event_source;
+
+static const struct wlr_buffer_impl buffer_impl = {
+    .destroy = bufdestroy,
+    .begin_data_ptr_access = bufdatabegin,
+    .end_data_ptr_access = bufdataend,
+};
+
 #ifdef XWAYLAND
 static void activatex11(struct wl_listener *listener, void *data);
 static void associatex11(struct wl_listener *listener, void *data);
@@ -2252,7 +2252,7 @@ pointerfocus(Client *c, struct wlr_surface *surface, double sx, double sy,
 
 	if (surface != seat->pointer_state.focused_surface &&
 			sloppyfocus && time && c && !client_is_unmanaged(c))
-
+}
 void
 resize(Client *c, struct wlr_box geo, int interact)
 {
