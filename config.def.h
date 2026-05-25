@@ -121,35 +121,35 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
-static const char *menucmd[] = { "wmenu-run", NULL };
+static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
-	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
-	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
-	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
-	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
-	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },
-	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.05f} },
+	{ MODKEY,                    XKB_KEY_r,          focusstack,     {.i = +1} },
+	{ MODKEY,                    XKB_KEY_t,          focusstack,     {.i = -1} },
+	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = +1} },
+	{ MODKEY,                    XKB_KEY_o,          incnmaster,     {.i = -1} },
+	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = -0.05f} },
+	{ MODKEY,                    XKB_KEY_i,          setmfact,       {.f = +0.05f} },
 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
-	{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },
+	/*{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },*/
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
-	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                    XKB_KEY_w,          setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,      togglefloating, {0} },
 	{ MODKEY,                    XKB_KEY_e,         togglefullscreen, {0} },
 	{ MODKEY,                    XKB_KEY_0,          view,           {.ui = ~0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag,            {.ui = ~0} },
-	{ MODKEY,                    XKB_KEY_comma,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY,                    XKB_KEY_period,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_less,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_greater,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
+	{ MODKEY,                    XKB_KEY_g,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY,                    XKB_KEY_comma,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_semicolon,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                     0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                         1),
 	TAGKEYS(          XKB_KEY_3, XKB_KEY_numbersign,                 2),
