@@ -130,6 +130,7 @@ static const Key keys[] = {
 	/* modifier                  key                 function        argument */
 	/*{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },*/
 	{ MODKEY,                    XKB_KEY_p,          spawn,          SHCMD("$HOME/.config/dwl/menu.sh")},
+	{ ALTKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
 	{ ALTKEY,                    XKB_KEY_r,          spawn,          {.v = firefoxcmd} },
