@@ -109,6 +109,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* If you want to use the windows key for MODKEY, use WLR_MODIFIER_LOGO */
 #define MODKEY WLR_MODIFIER_LOGO
+#define ALTKEY WLR_MODIFIER_ALT
 
 #define TAGKEYS(KEY,SKEY,TAG) \
 	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
@@ -121,7 +122,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
-static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };
+static const char *firefoxcmd[] = { "firefox", NULL };
+/*static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };*/
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -129,6 +131,8 @@ static const Key keys[] = {
 	/*{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },*/
 	{ MODKEY,                    XKB_KEY_p,          spawn,          SHCMD("$HOME/.config/dwl/menu.sh")},
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
+	{ ALTKEY,                    XKB_KEY_r,          spawn,          {.v = firefoxcmd} },
 	{ MODKEY,                    XKB_KEY_r,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_t,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = +1} },
