@@ -9,7 +9,7 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
 static int gaps                            = 1;  /* 1 means gaps between windows are added */
 static const unsigned int gappx            = 10; /* gap pixel between windows */
-static const unsigned int borderpx         = 1;  /* border pixel of windows */
+static const unsigned int borderpx         = 2;  /* border pixel of windows */
 static const float rootcolor[]             = COLOR(0x222222ff);
 static const float bordercolor[]           = COLOR(0x444444ff);
 static const float focuscolor[]            = COLOR(0x005577ff);
@@ -68,7 +68,7 @@ static const int repeat_delay = 600;
 static const int tap_to_click = 1;
 static const int tap_and_drag = 1;
 static const int drag_lock = 1;
-static const int natural_scrolling = 0;
+static const int natural_scrolling = 1;
 static const int disable_while_typing = 1;
 static const int left_handed = 0;
 static const int middle_button_emulation = 0;
@@ -122,6 +122,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
+static const char *vimwikicmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.md", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 /*static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };*/
 
@@ -133,6 +134,7 @@ static const Key keys[] = {
 	{ ALTKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
+	{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = vimwikicmd} },
 	{ ALTKEY,                    XKB_KEY_r,          spawn,          {.v = firefoxcmd} },
 	{ MODKEY,                    XKB_KEY_r,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_t,          focusstack,     {.i = -1} },
