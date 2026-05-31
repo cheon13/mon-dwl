@@ -1,3 +1,10 @@
+/* Définition manuelle des touches multimédias sans dépendance X11 */
+#define XF86XK_AudioRaiseVolume  0x1008FF13
+#define XF86XK_AudioLowerVolume  0x1008FF11
+#define XF86XK_AudioMute         0x1008FF12
+#define XF86XK_AudioMicMute      0x1008FFB2
+#define XF86XK_MonBrightnessUp   0x1008FF02
+#define XF86XK_MonBrightnessDown 0x1008FF03
 /* Taken from https://github.com/djpohly/dwl/issues/466 */
 #define COLOR(hex)    { ((hex >> 24) & 0xFF) / 255.0f, \
                         ((hex >> 16) & 0xFF) / 255.0f, \
@@ -26,8 +33,7 @@ static int log_level = WLR_ERROR;
 static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   monitor */
 	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
-	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
-    /* default/example rule: can be changed but cannot be eliminated; at least one rule must exist */
+	{ "firefox",          NULL,       1 << 1,       0,           -1 }, /* Start on ONLY tag "2" */
 };
 
 /* layout(s) */
@@ -68,7 +74,7 @@ static const int repeat_delay = 600;
 static const int tap_to_click = 1;
 static const int tap_and_drag = 1;
 static const int drag_lock = 1;
-static const int natural_scrolling = 1;
+static const int natural_scrolling = 0;
 static const int disable_while_typing = 1;
 static const int left_handed = 0;
 static const int middle_button_emulation = 0;
@@ -124,13 +130,23 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "foot", NULL };
 static const char *vimwikicmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.md", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
-/*static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };*/
+/*static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };*//* Commandes pour le son */
+static const char *volup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
+static const char *voldown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-", NULL };
+static const char *volmute[] = { "wpctl", "set-mute",   "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
+static const char *micmute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SOURCE@", "toggle", NULL };
+
+/* Commandes pour la luminosité */
+static const char *brightup[]   = { "brightnessctl", "set", "5%+", NULL };
+static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	/*{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },*/
 	{ MODKEY,                    XKB_KEY_p,          spawn,          SHCMD("$HOME/.config/dwl/menu.sh")},
+	{ MODKEY,                    XKB_KEY_a,          spawn,          SHCMD("$HOME/.config/dwl/appmenu.sh")},
+	{ MODKEY,                    XKB_KEY_s,          spawn,          SHCMD("$HOME/.config/dwl/sysmenu.sh")},
 	{ ALTKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
@@ -177,6 +193,17 @@ static const Key keys[] = {
 #define CHVT(n) { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_XF86Switch_VT_##n, chvt, {.ui = (n)} }
 	CHVT(1), CHVT(2), CHVT(3), CHVT(4), CHVT(5), CHVT(6),
 	CHVT(7), CHVT(8), CHVT(9), CHVT(10), CHVT(11), CHVT(12),
+
+/* Contrôle du Volume */
+    { 0,                XF86XK_AudioRaiseVolume, spawn,          {.v = volup} },
+    { 0,                XF86XK_AudioLowerVolume, spawn,          {.v = voldown} },
+    { 0,                XF86XK_AudioMute,        spawn,          {.v = volmute} },
+/* Contrôle du Micro */
+    { 0,                XF86XK_AudioMicMute,     spawn,          {.v = micmute} },
+
+    /* Contrôle de la Luminosité */
+    { 0,                XF86XK_MonBrightnessUp,   spawn,          {.v = brightup} },
+    { 0,                XF86XK_MonBrightnessDown, spawn,          {.v = brightdown} },
 };
 
 static const Button buttons[] = {
@@ -184,3 +211,4 @@ static const Button buttons[] = {
 	{ MODKEY, BTN_MIDDLE, togglefloating, {0} },
 	{ MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },
 };
+
