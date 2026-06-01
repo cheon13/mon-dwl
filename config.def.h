@@ -1,3 +1,4 @@
+#include "color.h"
 /* Définition manuelle des touches multimédias sans dépendance X11 */
 #define XF86XK_AudioRaiseVolume  0x1008FF13
 #define XF86XK_AudioLowerVolume  0x1008FF11
@@ -16,10 +17,11 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
 static int gaps                            = 1;  /* 1 means gaps between windows are added */
 static const unsigned int gappx            = 10; /* gap pixel between windows */
-static const unsigned int borderpx         = 4;  /* border pixel of windows */
+static const unsigned int borderpx         = 3;  /* border pixel of windows */
 static const float rootcolor[]             = COLOR(0x222222ff);
 static const float bordercolor[]           = COLOR(0x444444ff);
-static const float focuscolor[]            = COLOR(0x005577ff);
+/*static const float focuscolor[]            = COLOR(0x005577ff);*/
+static const float focuscolor[]            = COLOR(FOCUS_COLOR_HEX);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
