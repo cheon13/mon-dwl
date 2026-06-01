@@ -16,7 +16,7 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
 static int gaps                            = 1;  /* 1 means gaps between windows are added */
 static const unsigned int gappx            = 10; /* gap pixel between windows */
-static const unsigned int borderpx         = 2;  /* border pixel of windows */
+static const unsigned int borderpx         = 4;  /* border pixel of windows */
 static const float rootcolor[]             = COLOR(0x222222ff);
 static const float bordercolor[]           = COLOR(0x444444ff);
 static const float focuscolor[]            = COLOR(0x005577ff);
@@ -144,45 +144,45 @@ static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	/*{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },*/
-	{ MODKEY,                    XKB_KEY_p,          spawn,          SHCMD("$HOME/.config/dwl/menu.sh")},
+	{ MODKEY,                    XKB_KEY_p,          spawn,          SHCMD("$HOME/.config/dwl/passmenu.sh")},
 	{ MODKEY,                    XKB_KEY_a,          spawn,          SHCMD("$HOME/.config/dwl/appmenu.sh")},
 	{ MODKEY,                    XKB_KEY_s,          spawn,          SHCMD("$HOME/.config/dwl/sysmenu.sh")},
 	{ ALTKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	/*{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },*/
 	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
 	{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = vimwikicmd} },
 	{ ALTKEY,                    XKB_KEY_r,          spawn,          {.v = firefoxcmd} },
 	{ MODKEY,                    XKB_KEY_r,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_t,          focusstack,     {.i = -1} },
-	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = +1} },
-	{ MODKEY,                    XKB_KEY_o,          incnmaster,     {.i = -1} },
+	{ MODKEY,                    XKB_KEY_g,          incnmaster,     {.i = +1} },
+	{ MODKEY,                    XKB_KEY_comma,      incnmaster,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = -0.05f} },
 	{ MODKEY,                    XKB_KEY_i,          setmfact,       {.f = +0.05f} },
 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
 	/*{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },*/
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
-	{ MODKEY,                    XKB_KEY_w,          setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                    XKB_KEY_w,          setlayout,      {.v = &layouts[0]} }, /* tile mode */
+	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} }, /* float mode */
+	{ MODKEY,                    XKB_KEY_v,          setlayout,      {.v = &layouts[2]} }, /* monocle mode */
 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,      togglefloating, {0} },
-	{ MODKEY,                    XKB_KEY_e,         togglefullscreen, {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,          togglefloating, {0} },
+	{ MODKEY,                    XKB_KEY_e,          togglefullscreen, {0} },
 	{ MODKEY,                    XKB_KEY_0,          view,           {.ui = ~0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag,            {.ui = ~0} },
-	{ MODKEY,                    XKB_KEY_g,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY,                    XKB_KEY_comma,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_semicolon,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
-	TAGKEYS(          XKB_KEY_1, XKB_KEY_EuroSign,                     0),
-	TAGKEYS(          XKB_KEY_2, XKB_KEY_guillemotleft,                         1),
-	TAGKEYS(          XKB_KEY_3, XKB_KEY_guillemotright,                 2),
+	{ MODKEY,                    XKB_KEY_m,          focusmon,       {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY,                    XKB_KEY_d,          focusmon,       {.i = WLR_DIRECTION_RIGHT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,          tagmon,         {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_semicolon,  tagmon,         {.i = WLR_DIRECTION_RIGHT} },
+	TAGKEYS(          XKB_KEY_1, XKB_KEY_EuroSign,                   0),
+	TAGKEYS(          XKB_KEY_2, XKB_KEY_guillemotleft,              1),
+	TAGKEYS(          XKB_KEY_3, XKB_KEY_guillemotright,             2),
 	TAGKEYS(          XKB_KEY_4, XKB_KEY_dollar,                     3),
 	TAGKEYS(          XKB_KEY_5, XKB_KEY_percent,                    4),
 	TAGKEYS(          XKB_KEY_6, XKB_KEY_asciicircum,                5),
 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
-	TAGKEYS(          XKB_KEY_9, XKB_KEY_numbersign,                  8),
+	TAGKEYS(          XKB_KEY_9, XKB_KEY_numbersign,                 8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
