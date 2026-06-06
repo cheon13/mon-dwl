@@ -166,7 +166,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
 	{ MODKEY,                    XKB_KEY_w,          setlayout,      {.v = &layouts[0]} }, /* tile mode */
 	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} }, /* float mode */
-	{ MODKEY,                    XKB_KEY_v,          setlayout,      {.v = &layouts[2]} }, /* monocle mode */
+	{ MODKEY,                    XKB_KEY_b,          setlayout,      {.v = &layouts[2]} }, /* monocle mode */
 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,          togglefloating, {0} },
 	{ MODKEY,                    XKB_KEY_e,          togglefullscreen, {0} },
