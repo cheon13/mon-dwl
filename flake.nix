@@ -12,7 +12,7 @@
         
         dwl = pkgs.stdenv.mkDerivation rec {
           pname = "dwl";
-          version = "0.7";
+          version = "0.8";
           
           src = ./.;
 
@@ -32,7 +32,7 @@
           buildInputs = with pkgs; [
             wayland
             wayland-protocols
-            wlroots_0_18
+            wlroots_0_19
             libxkbcommon
             pixman
             libinput
