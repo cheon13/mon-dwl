@@ -16,7 +16,7 @@ nix run                # build and launch dwl
 nix develop            # dev shell with all deps, then `make`
 ```
 
-`flake.nix` pins `nixpkgs/nixos-25.11` and builds against `wlroots_0_19` (dwl 0.8). `src = ./.` so the local tree (including your edited `config.def.h`) is what gets compiled — the commented-out `fetchFromGitea` block is the alternative for building a pristine upstream tag.
+`flake.nix` pins `nixpkgs/nixos-26.05` and builds against `wlroots_0_19` (dwl 0.8). `src = ./.` so the local tree (including your edited `config.def.h`) is what gets compiled — the commented-out `fetchFromGitea` block is the alternative for building a pristine upstream tag.
 
 The raw upstream build also works inside the dev shell: `make` (and `make clean`). `config.mk` expects `wlroots-0.19` via pkg-config. XWayland is off by default — uncomment its flags in `config.mk` to enable.
 
