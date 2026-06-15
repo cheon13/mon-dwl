@@ -1,0 +1,36 @@
+# Raccourcis
+
+| Raccourcis        | action                                                     |
+| ----------        | ------------------------------                             |
+| Super + p         | password menu                                              |
+| Super + a         | application menu                                           |
+| Super + s         | system menu                                                |
+| Alt + z           | zwift                                                      |
+| Alt + t           | terminal                                                   |
+| Alt + i           | vimwiki                                                    |
+| Alt + r           | firefox                                                    |
+| Super + r         | focus stack down                                           |
+| Super + t         | focus stack up                                             |
+| Super + g         | incnmaster +1 augmente le nb de fenêtre dans le maître     |
+| Super + ,         | incnmaster -1 diminue le nb de fenêtre dans le maître      |
+| Super + l         | déplace la séparation vers la gauche                       |
+| Super + i         | déplace la séparation vers la droite                       |
+| Super + Return    | zoom : place la fenêtre active première dans le master     |
+| Super + Tab       | view : revient au Tag précédent                            |
+| Super + Shift + c | fermer la fenêtre                                          |
+| Super + Shift + q | fermer la session                                          |
+| Super + Shift + w | tile mode                                                  |
+| Super + Shift + f | float mode                                                 |
+| Super + Shift + b | monocle mode                                               |
+| Super + space     | placer la fenêtre active en floating                       |
+| Super + Shift + f | bascule floating                                           |
+| Super + e         | bascule en plein écran                                     |
+| Super + 0         | montre toutes les fenêtres dans le même écran              |
+| Super + @         | épingle la fenêtre active sur tous les écrans              |
+| Super + m         | focus écran de gauche                                      |
+| Super + d         | focus écran de droite                                      |
+| Super + Shift + m | déplace sur l'écran de gauche                              |
+| Super + Shift + d | déplace sur l'écran de droite                              |
+|                   |                                                            |
+
+
