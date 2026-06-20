@@ -150,6 +150,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_a,          spawn,          SHCMD("$HOME/.config/dwl/appmenu.sh")},
 	{ MODKEY,                    XKB_KEY_s,          spawn,          SHCMD("$HOME/.config/dwl/sysmenu.sh")},
 	{ ALTKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
+	{ ALTKEY,                    XKB_KEY_space,      spawn,          SHCMD("$HOME/.config/dwl/toggle-whisper.sh")},
 	/*{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },*/
 	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
 	{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = vimwikicmd} },
