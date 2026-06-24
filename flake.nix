@@ -16,14 +16,6 @@
           
           src = ./.;
 
-          #src = pkgs.fetchFromGitea {
-          #  domain = "codeberg.org";
-          #  owner = "dwl";
-          #  repo = "dwl";
-          #  rev = "v${version}";
-          #  hash = "sha256-7SoCITrbMrlfL4Z4hVyPpjB9RrrjLXHP9C5t1DVXBBA=";
-          #};
-
           nativeBuildInputs = with pkgs; [
             pkg-config
             wayland-scanner
@@ -37,9 +29,6 @@
             pixman
             libinput
           ];
-          
-          # Variables d'environnement pour pkg-config
-          #PKG_CONFIG_PATH = "${pkgs.wlroots_0_18}/lib/pkgconfig";
           
           # Désactiver git pour la version
           makeFlags = [
