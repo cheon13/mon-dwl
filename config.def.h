@@ -131,6 +131,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
 static const char *vimwikicmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.md", NULL };
+static const char *orgmodecmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.org", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 /*static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };*//* Commandes pour le son */
 static const char *volup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
@@ -153,7 +154,8 @@ static const Key keys[] = {
 	{ ALTKEY,                    XKB_KEY_space,      spawn,          SHCMD("$HOME/.config/dwl/toggle-whisper.sh")},
 	/*{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },*/
 	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
-	{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = vimwikicmd} },
+	/*{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = vimwikicmd} },*/
+	{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = orgmodecmd} },
 	{ ALTKEY,                    XKB_KEY_r,          spawn,          {.v = firefoxcmd} },
 	{ MODKEY,                    XKB_KEY_r,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_t,          focusstack,     {.i = -1} },
