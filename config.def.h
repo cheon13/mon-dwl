@@ -131,8 +131,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
 static const char *vimwikicmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.md", NULL };
-static const char *orgmodecmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.org", NULL };
-static const char *emacscmd[] = { "emacs", "/home/cheon/Documents/Cerveau/index.org", NULL };
+/*static const char *orgmodecmd[] = { "foot", "-T", "Notes", "-D", "/home/cheon/Documents/Cerveau", "nvim", "+/Note", "/home/cheon/Documents/Cerveau/index.org", NULL };*/
+static const char *orgmodecmd[] = { "emacs", "/home/cheon/Documents/Cerveau/index.org", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 /*static const char *menucmd[] = { "wmenu-run", "-f", "Adwaita Mono 15", NULL };*//* Commandes pour le son */
 static const char *volup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
