@@ -151,14 +151,14 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_p,          spawn,          SHCMD("$HOME/.config/dwl/passmenu.sh")},
 	{ MODKEY,                    XKB_KEY_a,          spawn,          SHCMD("$HOME/.config/dwl/appmenu.sh")},
 	{ MODKEY,                    XKB_KEY_s,          spawn,          SHCMD("$HOME/.config/dwl/sysmenu.sh")},
-	{ ALTKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
-	{ ALTKEY,                    XKB_KEY_space,      spawn,          SHCMD("$HOME/.config/dwl/toggle-whisper.sh")},
-	/*{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },*/
-	{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },
+	{ MODKEY,                    XKB_KEY_z,          spawn,          SHCMD("$HOME/.config/dwl/zwift.sh")},
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      spawn,          SHCMD("$HOME/.config/dwl/toggle-whisper.sh")},
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	/*{ ALTKEY,                    XKB_KEY_t,          spawn,          {.v = termcmd} },*/
 	/*{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = vimwikicmd} },*/
-	{ ALTKEY,                    XKB_KEY_i,          spawn,          {.v = orgmodecmd} },
-	{ ALTKEY,                    XKB_KEY_e,          spawn,          {.v = emacscmd} },
-	{ ALTKEY,                    XKB_KEY_r,          spawn,          {.v = firefoxcmd} },
+	{ MODKEY,                    XKB_KEY_o,          spawn,          {.v = orgmodecmd} },
+	/*{ ALTKEY,                    XKB_KEY_e,          spawn,          {.v = emacscmd} },*/
+	{ MODKEY,                    XKB_KEY_n,          spawn,          {.v = firefoxcmd} },
 	{ MODKEY,                    XKB_KEY_r,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_t,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_g,          incnmaster,     {.i = +1} },

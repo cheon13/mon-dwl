@@ -1,5 +1,5 @@
-# Raccourcis
-
+#+Title: Raccourcis de DWL
+#+OPTIONS: date:nil author:nil
 | Raccourcis             | action                                                 |
 |------------------------|--------------------------------------------------------|
 | Super + p              | password menu                                          |
